@@ -10,7 +10,7 @@ public class Board
 	{
 		if(rows < 1 || columns < 1)
 		{
-			throw new BoardException("Error creating board: there must be at 1 row and 1 column")
+			throw new BoardException("Error creating board: there must be at 1 row and 1 column");
 		}
 		this.rows = rows;
 		this.columns = columns;
