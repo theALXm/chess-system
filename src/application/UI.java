@@ -9,6 +9,8 @@ import chess.Color;
 
 public class UI 
 {
+	
+	
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -28,11 +30,24 @@ public class UI
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
-	public static void clearScreen() 
+	//public static void clearScreen() 
 	{
 		 System.out.print("\033[H\033[2J");
 		 System.out.flush();
 	} 
+	
+	public static void cls()
+	{
+		try
+		{
+			new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+		}
+
+		catch(Exception  e)
+		{		
+			System.out.println(e);
+		}
+	}
 	
 	public static ChessPosition readChessPosition(Scanner sc)
 	{
@@ -53,7 +68,7 @@ public class UI
 	{
 		for (int i=0; i<pieces.length; i++)
 		{
-			System.out.print((8 - i)+" ");
+			System.out.print((8 - i) + " ");
 			for (int j=0; j<pieces.length; j++)
 			{
 				printPiece(pieces[i][j]);
@@ -71,10 +86,12 @@ public class UI
 		}
 		else
 		{
-			if (piece.getColor() == Color.WHITE) {
+			if (piece.getColor() == Color.WHITE)
+			{
                 System.out.print(ANSI_WHITE + piece + ANSI_RESET);
             }
-            else {
+            else
+            {
                 System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
             }
         }
