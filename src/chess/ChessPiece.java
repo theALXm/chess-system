@@ -13,11 +13,10 @@ public abstract class ChessPiece extends Piece
 		super(board);
 		this.color = color;
 	}
-
-	protected boolean isThereOpponentPiece(Position position)
+	
+	public ChessPosition getChessPosition()
 	{
-		ChessPiece p = (ChessPiece)getBoard().piece(position);		
-		return p != null && p.getColor() != color;
+		return ChessPosition.fromPosition(position);
 	}
 	
 	public Color getColor() 
@@ -25,4 +24,10 @@ public abstract class ChessPiece extends Piece
 		return color;
 	}		
 	
+
+	protected boolean isThereOpponentPiece(Position position)
+	{
+		ChessPiece p = (ChessPiece)getBoard().piece(position);		
+		return p != null && p.getColor() != color;
+	}
 }
