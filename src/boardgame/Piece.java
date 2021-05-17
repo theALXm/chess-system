@@ -15,6 +15,7 @@ public abstract class Piece
 	{
 		return board;
 	}
+	public abstract String toString();
 	
 	public abstract boolean [][] possibleMoves();
 
